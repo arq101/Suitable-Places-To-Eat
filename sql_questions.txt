@@ -1,0 +1,86 @@
+Question 1):
+===============
+Based on the model and data above, what is the total revenue value?
+
+** by hand **
+
+Sales
+------
+
+product   sales_date quantity price product_revenue
+---------------------------------------------------
+product_1 01/01/2018 10       50    500
+product_2 02/01/2018 12       40    480
+product_1 04/01/2018 50       25    1250
+product_2 06/01/2018 70       20    1400
+product_1 12/01/2018 8        50    400
+product_2 15/01/2018 9        40    360
+
+
+total_revenue = sum of product_revenue
+              = 4390
+
+
+
+Question 2):
+=============
+Write a SQL query which would determine the total revenue value.
+
+Preparing SQL statements in order to tackle this problem ...
+
+#--------------------------------------------------
+drop table if exists Prices;
+create table Prices (
+  product varchar (50),
+  price_effective_date varchar(30),
+  price int
+ );
+
+
+drop table if exists Sales;
+create table Sales (
+  product varchar(50),
+  sales_date varchar(30),
+  quantity int
+);
+
+
+
+insert into Prices (product, price_effective_date, price)
+  values
+  ('product_1', '01/01/2018', 10),
+  ('product_2', '02/01/2018', 12),
+  ('product_1', '04/01/2018', 50),
+  ('product_2', '06/01/2018', 70),
+  ('product_1', '12/01/2018', 8),
+  ('product_2', '15/01/2018', 9)
+;
+
+
+insert into Sales (product, sales_date, quantity)
+  values
+  ('product_1', '01/01/2018', 10),
+  ('product_2', '02/01/2018', 12),
+  ('product_1', '04/01/2018', 50),
+  ('product_2', '06/01/2018', 70),
+  ('product_1', '12/01/2018', 8),
+  ('product_2', '15/01/2018', 9)
+;
+
+
+select
+  product,
+  to_date(sales_date, 'DD/MM/YYYY'),
+  quantity
+from Sales;
+
+#--------------------------------------------------
+
+NOTE:
+I ran out of time to come up with a solution.
+
+I used to use SQL extensively as 2nd-line Technical Support, but that was 7 years ago.
+Since moving into the field of Software Development, I have had very little need for SQL querying.
+Given time to bring myself up-to-speed with SQL, I would definitely be able to come up with a solution.
+
+
